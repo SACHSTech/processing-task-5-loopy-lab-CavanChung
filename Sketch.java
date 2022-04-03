@@ -1,11 +1,15 @@
+/**
+ * Name: Processing Task 5
+ * Purpose: Using loops draw rectangles in patterns in quadrants
+ * Author: Cavan Chung
+ * Created: 2022/04/02
+ */
 import processing.core.PApplet;
 
 public class Sketch extends PApplet {
 	
 	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
+
   public void settings() {
 	// put your size call here
     size(1200, 600);
@@ -24,20 +28,12 @@ public class Sketch extends PApplet {
    */
   public void draw() {
 	  
-	// sample code, delete this stuff
-    /*
-    stroke(128);
-    line(150, 25, 270, 350);  
 
-    stroke(255);
-    line(50, 125, 70, 50);  
-*/
     draw_section_outlines();
     draw_section1();
     draw_section2();
     draw_section3();
     draw_section4();
-	  
     draw_section5();
     draw_section6();
     draw_section7();
@@ -67,71 +63,182 @@ public class Sketch extends PApplet {
     rect(900, 0, 300, 300);
   }
   
-  /**
-   * draws the bottom left section
-   */
+
   public void draw_section1(){
     int intX = 0;
     int intY = 0;
-
-    for(int intRow = 0; intRow < 30; intRow++){
-      for(int intColumn = 0; intColumn < 30; intColumn++){
-        intX = 3 + 0;  //Instead of zero, calculate the proper intX location using 'intRow'
-        intY = 300 + 3 + 0; //Instead of zero, calculate the proper intY location using 'intColumn'
-
+    
+    // set the x and y values and loop until a grid has formed
+    for(int intRow = 5; intRow < 300; intRow += 10){
+      for(int intColumn = 5; intColumn < 300; intColumn += 10){
+        intX = intRow; 
+        intY = 300 + intColumn;
+        
+        // draw rectangles
         fill(255);
         noStroke();
         rect(intX, intY, 5, 5);
-
       }
     }
   }
 
-  /**
-   * Use the modulus operator and an if statement to select the color
-   * Don't loop from 30 to 60 to shift everything over, just add 300 to x.
-   */
   public void draw_section2(){
+    int intX = 0;
+    int intY = 0;
+    int colour;
 
+    // set the x and y values and loop until a grid has formed
+    for(int intRow = 0; intRow < 30; intRow += 1){
+      for(int intColumn = 0; intColumn < 30; intColumn += 1){
+        intX = 304 + (intRow * 10); 
+        intY = 304 + (intColumn * 10);
+
+        // if statement to determine colour values
+        if (intRow % 2 == 0) {
+          colour = 255;
+        }
+        else {
+          colour = 0;
+        }
+
+        // draw rectangles, determining colour based on the if statment
+        fill(colour);
+        noStroke();
+        rect(intX, intY, 5, 5);
+      }
+    }
   }
-
-  /**
-   * Use the modulus operator and an if/else statement to select the color.
-   * Don't use multiple 'if' statements.
-   */
+  
   public void draw_section3(){
 
+    int intX = 0;
+    int intY = 0;
+    int colour;
+
+    // set the x and y values and loop until a grid has formed 
+    for(int intRow = 0; intRow < 30; intRow += 1){
+      for(int intColumn = 0; intColumn < 30; intColumn += 1){
+        intX = 604 + (intRow * 10); 
+        intY = 304 + (intColumn * 10);
+
+        // if statement to determine colour values
+        if (intColumn % 2 == 0) {
+          colour = 255;
+        }
+        else {
+          colour = 0;
+        }
+
+        // draw rectangles, determining colour based on the if statment
+        fill(colour);
+        noStroke();
+        rect(intX, intY, 5, 5);
+      }
+    }
   }
 
-  /**
-   * Use the modulus operator and just one 'if' statement to select the color.
-   */
+  
   public void draw_section4(){
 
+    int intX = 0;
+    int intY = 0;
+    int colour;
+
+    // set the x and y values and loop until a grid has formed
+    for(int intRow = 0; intRow < 30; intRow += 1){
+      for(int intColumn = 0; intColumn < 30; intColumn += 1){
+        intX = 904 + (intRow * 10); 
+        intY = 304 + (intColumn * 10);
+        
+        // if statement to determine colour values
+        if (intRow % 2 == 0 & intColumn % 2 == 0) {
+          colour = 255;
+        }
+        else {
+          colour = 0;
+        }
+
+        // draw rectangles, determining colour based on the if statment
+        fill(colour);
+        noStroke();
+        rect(intX, intY, 5, 5);
+      }
+    }
   }
 
-  /**
-   * Do NOT use 'if' statements to complete 5-8. Manipulate the loops instead
-   */
   public void draw_section5(){
 
+    int intX = 0;
+    int intY = 0;
+
+    // determine x and y values loop until half the quadrant is covered (triangle)
+    for(int intColumn = 5; intColumn < 300; intColumn += 10){
+      for(int intRow = 300 - intColumn; intRow < 300; intRow += 10){
+        intX = intRow; 
+        intY = intColumn;
+
+        // print rectangles
+        fill(255);
+        noStroke();
+        rect(intX, intY, 5, 5);
+        }
+      }
   }
 
   public void draw_section6(){
 
+    int intX = 0;
+    int intY = 0;
+
+    // determine x and y values loop until half the quadrant is covered (triangle)
+    for(int intRow = 300; intRow > 0; intRow -= 10){
+      for(int intColumn = 295; intColumn > intRow; intColumn -= 10){
+        intX = 300 + intRow; 
+        intY = intColumn - 5;
+
+        // print rectangles
+        fill(255);
+        noStroke();
+        rect(intX, intY, 5, 5);
+        }
+      }
   }
 
   public void draw_section7(){
 
+    int intX = 0;
+    int intY = 0;
+
+    // determine x and y values loop until half the quadrant is covered (triangle)
+    for(int intColumn = 5; intColumn < 300; intColumn += 10){
+      for(int intRow = 300 - intColumn; intRow > 0; intRow -= 10){
+        intX = 600 + intRow - 3; 
+        intY = intColumn;
+
+        // print rectangles
+        fill(255);
+        noStroke();
+        rect(intX, intY, 5, 5);
+        }
+      }
   }
   
   public void draw_section8(){
 
+    int intX = 0;
+    int intY = 0;
+    
+    // determine x and y values loop until half the quadrant is covered (triangle)
+    for(int intRow = 5; intRow < 300; intRow += 10){
+      for(int intColumn = 5; intColumn < intRow; intColumn += 10){
+        intX = 900 + intRow - 3; 
+        intY = intColumn;
+
+        // print rectangles
+        fill(255);
+        noStroke();
+        rect(intX, intY, 5, 5);
+        }
+      }
   }
-
-
-
-
-
-
 }
